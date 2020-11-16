@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quickhoot.server;
+package quickhootclient;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,20 +13,20 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Alessio
+ * @author Quick Fix Demons
  */
-public class QuickhootServer extends Application {
+public class QuickhootClient extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("CLIENT");
         stage.setScene(scene);
         stage.show();
     }
-
+    
     /**
      * @param args the command line arguments
      */
