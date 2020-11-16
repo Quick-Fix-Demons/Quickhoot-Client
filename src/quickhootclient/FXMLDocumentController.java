@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quickhoot.server;
+package quickhootclient;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 
 /**
  *
- * @author Alessio
+ * @author Quick Fix Demons
  */
 public class FXMLDocumentController implements Initializable {
     
