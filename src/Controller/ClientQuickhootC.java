@@ -6,9 +6,12 @@
 package Controller;
 
 import Model.Ascoltatore;
+import Model.Msg;
 import Model.Ricevitore;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
@@ -29,7 +32,7 @@ public class ClientQuickhootC implements Initializable {
     private Ricevitore reciver;
     private PrintWriter pw;
     private Socket clientSocket;
-    
+    private Msg messaggio=new Msg();
     
     public void initialize(URL url, ResourceBundle rb) {
         int porta = 9991;
@@ -75,12 +78,12 @@ public class ClientQuickhootC implements Initializable {
         parola=sc.nextLine(); //scrivere dentro a parola la risposta con uno scanner
         
         
-        String messaggio=nick+"-"+parola+"-"+tempo; //vado a mettere dentro a messaggio tutti i parametri che mi servono
+        String messaggio_da_inviare=nick+" - "+parola+" - "+tempo; //vado a mettere dentro a messaggio tutti i parametri che mi servono
         if(parola.equals("")) return;
        
-       
-        pw.println(messaggio);//spedisco al server il messaggio con un printwriter
-        if(messaggio.equals("/end")) {
+        //messaggio.metti(messaggio_da_inviare);
+        pw.println(messaggio_da_inviare);//spedisco al server il messaggio con un printwriter
+        if(messaggio_da_inviare.equals("/end")) {
             try {
                 clientSocket.close();
             } catch (IOException ex) {
@@ -90,8 +93,17 @@ public class ClientQuickhootC implements Initializable {
         }
     }
     
-    public void RiceviRisposta(){
-        
+    public void RiceviDomanda() throws IOException{
+       Scanner sc;
+       String messaggio_ricevuto;
+       sc=Scanner(clientSocket.getInputStream());
+       messaggio_ricevuto=messaggio.leggi();
+       
+       System.out.println(messaggio_ricevuto);
     } 
+
+    private Scanner Scanner(InputStream inputStream) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
