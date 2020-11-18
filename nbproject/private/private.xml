@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/Ascoltatore.java</file>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/Timer.java</file>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/FXMLDocument.fxml</file>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/QuickhootClient.java</file>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/ClientController.java</file>
+            <file>file:/C:/Users/andrea/Desktop/Progetto/Quickhoot-Client/src/quickhootclient/FXMLDocumentController.java</file>
+        </group>
     </open-files>
 </project-private>
