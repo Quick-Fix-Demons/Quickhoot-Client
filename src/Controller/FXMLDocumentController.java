@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quickhootclient;
+package Controller;
 
+import Model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -15,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -25,7 +27,8 @@ import javafx.scene.input.KeyEvent;
  *
  * @author Quick Fix Demons
  */
-public class ClientController implements Initializable {
+public class FXMLDocumentController implements Initializable {
+    
     private String nomeClient;
     private Ascoltatore reader;
     private PrintWriter pw;
@@ -106,5 +109,6 @@ public class ClientController implements Initializable {
             }
             System.exit(0);
         }
-    }
+    }   
+    
 }
