@@ -30,6 +30,10 @@ public class Ascoltatore extends Thread {
         this.out = output;
     }
 
+    public Ascoltatore(String reader, Socket clientSocket) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public void run() {
         out.setText(out.getText() + "\nbrrrrrr");
