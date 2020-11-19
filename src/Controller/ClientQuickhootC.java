@@ -18,12 +18,15 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 
 
 /**
  *
- * @author Utente
+ * @author Quick Fix Demons
  */
 public class ClientQuickhootC implements Initializable {
     
@@ -34,12 +37,24 @@ public class ClientQuickhootC implements Initializable {
     private Socket clientSocket;
     private Msg messaggio=new Msg();
     
+    @FXML
+    private TextArea output;
+    
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         int porta = 9991;
         
-       
-       
-       
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Client");
+        dialog.setHeaderText("Login");
+        dialog.setContentText("Inserisci il nome utente:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            System.out.println("Nome utente: " + result.get());
+        }
+        
+        result.ifPresent(risultato -> setNomeClient(risultato));
         
         try {
             InetAddress addr = InetAddress.getByName("127.0.0.1");
@@ -47,15 +62,14 @@ public class ClientQuickhootC implements Initializable {
             
             pw = new PrintWriter(clientSocket.getOutputStream(), true);
             pw.println(this.getNomeClient());
-            reader = new Ascoltatore("reader", clientSocket);
-            reciver=new Ricevitore(clientSocket);
-            reciver.start();
+            reader = new Ascoltatore("reader", clientSocket, output);
             reader.start();
         }
         catch (IOException ex) {
             ex.printStackTrace();
         }
-        
+        output.setEditable(false);
+        output.setText("Connessione Instanziata");
     }
 
     public String getNomeClient() {
@@ -96,14 +110,11 @@ public class ClientQuickhootC implements Initializable {
     public void RiceviDomanda() throws IOException{
        Scanner sc;
        String messaggio_ricevuto;
-       sc=Scanner(clientSocket.getInputStream());
-       messaggio_ricevuto=messaggio.leggi();
+       sc=new Scanner(clientSocket.getInputStream());
+       messaggio_ricevuto=sc.nextLine();
        
        System.out.println(messaggio_ricevuto);
     } 
 
-    private Scanner Scanner(InputStream inputStream) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
