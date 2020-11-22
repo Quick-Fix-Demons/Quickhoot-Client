@@ -18,7 +18,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 
 /**
@@ -33,6 +35,15 @@ public class ClientQuickhootC implements Initializable {
     private PrintWriter pw;
     private Socket clientSocket;
     private Msg messaggio=new Msg();
+    
+    @FXML
+    private Button button;
+    @FXML
+    private Button butt;
+    @FXML
+    private Button butto;
+    @FXML
+    private Button buttons;
     
     public void initialize(URL url, ResourceBundle rb) {
         int porta = 9991;
@@ -51,6 +62,7 @@ public class ClientQuickhootC implements Initializable {
             reciver=new Ricevitore(clientSocket);
             reciver.start();
             reader.start();
+            
         }
         catch (IOException ex) {
             ex.printStackTrace();
@@ -67,18 +79,20 @@ public class ClientQuickhootC implements Initializable {
         this.nomeClient = nomeClient;
     }
     
-    public void inviaMessaggio() {
+    
+    public void inviaMessaggio(int idbottone) {
         Scanner sc=new Scanner(System.in);
-        String parola ; //parola che indica la risposta alla domanda
+        String parola="0123" ; //parola che indica la risposta alla domanda
         String nick;// nickname del giocatore
         String tempo="2s"; //esempio di tempo predefinito
         
         nick=sc.nextLine();//scrivere sentro al nick il tuo nickname
         sc.nextLine();
-        parola=sc.nextLine(); //scrivere dentro a parola la risposta con uno scanner
+         //scrivere dentro a parola la risposta con uno scanner
+       
         
+        String messaggio_da_inviare=nick+" - "+idbottone+" - "+tempo; //vado a mettere dentro a messaggio tutti i parametri che mi servono
         
-        String messaggio_da_inviare=nick+" - "+parola+" - "+tempo; //vado a mettere dentro a messaggio tutti i parametri che mi servono
         if(parola.equals("")) return;
        
         //messaggio.metti(messaggio_da_inviare);
@@ -92,10 +106,30 @@ public class ClientQuickhootC implements Initializable {
             System.exit(0);
         }
     }
-    
+    @FXML
+    public void Click1(){
+        
+        inviaMessaggio(0);
+    }
+    @FXML
+    public void Click2(){
+        
+        inviaMessaggio(1);
+    }
+    @FXML
+    public void Click3(){
+        
+        inviaMessaggio(2);
+    }
+    @FXML
+    public void Click4(){
+        
+        inviaMessaggio(3);
+    }
     public void RiceviDomanda() throws IOException{
        Scanner sc;
        String messaggio_ricevuto;
+       
        sc=Scanner(clientSocket.getInputStream());
        messaggio_ricevuto=messaggio.leggi();
        

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quickhootclient.ClientController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientQuickhootC">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -19,8 +19,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="inserimento" onKeyPressed="#keyPress" promptText="Scrivi il messaggio." />
-            <Button mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="118.0" text="Invia" GridPane.columnIndex="1" />
+            
+            <Button fx:id="button" mnemonicParsing="false" onAction="Click1" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp1 "  />
+            <Button fx:id="butt" mnemonicParsing="false" onAction="Click2" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp2 "    />
+            <Button fx:id="butto" mnemonicParsing="false" onAction="Click3" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp3"   />
+            <Button fx:id="buttons" mnemonicParsing="false" onAction="Click4" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp4 " />
+            
          </children>
       </GridPane>
    </bottom>
