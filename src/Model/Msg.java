@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author Salvatore
+ * @author Quick Fix Demons
  */
 public class Msg {
     

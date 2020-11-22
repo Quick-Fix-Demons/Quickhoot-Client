@@ -18,7 +18,7 @@ import javafx.scene.control.TextArea;
  */
 public class Ascoltatore extends Thread {
     private Scanner socketScanner;
-    //private TextArea out;
+    private TextArea out;
     
     public Ascoltatore(String name, Socket connectionSocket, TextArea output) {
         super(name);
@@ -36,11 +36,10 @@ public class Ascoltatore extends Thread {
 
     @Override
     public void run() {
-        //out.setText(out.getText() + "\nbrrrrrr");
         while(true) {
             String ricevuto = socketScanner.nextLine();
             System.out.println(ricevuto);
-            //out.setText(out.getText() + "\n" + ricevuto);
+            out.setText(out.getText() + "\n" + ricevuto);
         }
     }
     

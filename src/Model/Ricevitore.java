@@ -5,17 +5,13 @@
  */
 package Model;
 
-/**
- *
- * @author Utente
- */
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
  *
- * @author Salvatore
+ * @author Quick Fix Demons
  */
 public class Ricevitore extends Thread {
     

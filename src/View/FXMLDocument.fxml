@@ -19,12 +19,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+<<<<<<< HEAD
             
             <Button fx:id="button" mnemonicParsing="false" onAction="Click1" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp1 "  />
             <Button fx:id="butt" mnemonicParsing="false" onAction="Click2" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp2 "    />
             <Button fx:id="butto" mnemonicParsing="false" onAction="Click3" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp3"   />
             <Button fx:id="buttons" mnemonicParsing="false" onAction="Click4" GridPane.rowIndex="0" GridPane.columnIndex="0" text="risp4 " />
             
+=======
+            <TextField fx:id="inserimento" promptText="Scrivi il messaggio." />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Invia" GridPane.columnIndex="1" />
+>>>>>>> 76adbe8d2ee5c7608f7fc7331a5e712dfc00e418
          </children>
       </GridPane>
    </bottom>
