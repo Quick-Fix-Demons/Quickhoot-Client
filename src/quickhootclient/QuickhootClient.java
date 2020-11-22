@@ -24,6 +24,7 @@ public class QuickhootClient extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("CLIENT");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
     

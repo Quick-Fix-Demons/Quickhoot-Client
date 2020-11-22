@@ -6,12 +6,8 @@
 package Controller;
 
 import Model.Ascoltatore;
-import Model.Msg;
-import Model.Ricevitore;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
@@ -20,13 +16,11 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-<<<<<<< HEAD
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-=======
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
->>>>>>> 76adbe8d2ee5c7608f7fc7331a5e712dfc00e418
-
 
 /**
  *
@@ -36,26 +30,24 @@ public class ClientQuickhootC implements Initializable {
     
     private String nomeClient;
     private Ascoltatore reader;
-    private Ricevitore reciver;
     private PrintWriter pw;
     private Socket clientSocket;
-    private Msg messaggio=new Msg();
+    private boolean rispostaInviata;
     
     @FXML
-<<<<<<< HEAD
-    private Button button;
+    private TextField header;
     @FXML
-    private Button butt;
+    private Button button0;
     @FXML
-    private Button butto;
+    private Button button1;
     @FXML
-    private Button buttons;
+    private Button button2;
+    @FXML
+    private Button button3;
     
-=======
-    private TextArea output;
+    
     
     @Override
->>>>>>> 76adbe8d2ee5c7608f7fc7331a5e712dfc00e418
     public void initialize(URL url, ResourceBundle rb) {
         int porta = 9991;
         
@@ -77,87 +69,63 @@ public class ClientQuickhootC implements Initializable {
             
             pw = new PrintWriter(clientSocket.getOutputStream(), true);
             pw.println(this.getNomeClient());
-            reader = new Ascoltatore("reader", clientSocket, output);
+            reader = new Ascoltatore("reader", clientSocket, header, button0, button1, button2, button3, rispostaInviata);
             reader.start();
-            
+            rispostaInviata = false;
         }
         catch (IOException ex) {
             ex.printStackTrace();
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore di connessione al server.");
+            alert.setContentText(ex.toString());
+
+            alert.showAndWait();
+            System.exit(0);
         }
-        output.setEditable(false);
-        output.setText("Connessione Instanziata");
+        header.setEditable(false);
+        header.setText("Connessione Instanziata");
     }
 
     public String getNomeClient() {
         return nomeClient;
     }
     
-    
     public void setNomeClient(String nomeClient) {
         this.nomeClient = nomeClient;
     }
     
-    
-    public void inviaMessaggio(int idbottone) {
-        Scanner sc=new Scanner(System.in);
-        String parola="0123" ; //parola che indica la risposta alla domanda
-        String nick;// nickname del giocatore
-        String tempo="2s"; //esempio di tempo predefinito
+    public void inviaMessaggio(int idBottone) {
+        int tempo = 2;
         
-        nick=sc.nextLine();//scrivere sentro al nick il tuo nickname
-        sc.nextLine();
-         //scrivere dentro a parola la risposta con uno scanner
-       
-        
-        String messaggio_da_inviare=nick+" - "+idbottone+" - "+tempo; //vado a mettere dentro a messaggio tutti i parametri che mi servono
-        
-        if(parola.equals("")) return;
-       
-        //messaggio.metti(messaggio_da_inviare);
-        pw.println(messaggio_da_inviare);//spedisco al server il messaggio con un printwriter
-        if(messaggio_da_inviare.equals("/end")) {
-            try {
-                clientSocket.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            System.exit(0);
+        String messaggio_da_inviare = getNomeClient() + " - " + idBottone+" - " + tempo;
+        // Spedisco al server il messaggio con un printwriter
+        if(!rispostaInviata) {
+            pw.println(messaggio_da_inviare);
+            rispostaInviata = false;
+            
         }
-    }
-    @FXML
-    public void Click1(){
         
+    }
+    
+    @FXML
+    public void click0() {
         inviaMessaggio(0);
     }
+    
     @FXML
-    public void Click2(){
-        
+    public void click1() {
         inviaMessaggio(1);
     }
+    
     @FXML
-    public void Click3(){
-        
+    public void click2() {
         inviaMessaggio(2);
     }
+    
     @FXML
-    public void Click4(){
-        
+    public void click3() {
         inviaMessaggio(3);
     }
-    public void RiceviDomanda() throws IOException{
-       Scanner sc;
-       String messaggio_ricevuto;
-<<<<<<< HEAD
-       
-       sc=Scanner(clientSocket.getInputStream());
-       messaggio_ricevuto=messaggio.leggi();
-=======
-       sc=new Scanner(clientSocket.getInputStream());
-       messaggio_ricevuto=sc.nextLine();
->>>>>>> 76adbe8d2ee5c7608f7fc7331a5e712dfc00e418
-       
-       System.out.println(messaggio_ricevuto);
-    } 
-
     
 }
